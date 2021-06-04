@@ -10,6 +10,7 @@ const now = new Date()
 
 const monthTemplate = document.getElementById("month-template").content
 const dayTemplate = document.getElementById("day-template").content
+const tooltipTemplate = document.getElementById("tooltip-template").content
 
 const generateMonths = () => {
   const main = document.getElementById("main")
@@ -92,4 +93,15 @@ const populateCalendar = () => {
     (currentGoal.type == "girlMonth") ? "Girl Month" :
     (currentGoal.type == "break") ? "YouTube Break" :
     (currentGoal.type == "bobs") ? "Bobs Month" : ""
+
+
+  events.forEach(event => {
+    const [year, month, day] = event.date
+    const dayDiv = document.getElementById(`day-${year}-${month}-${day}`)
+    dayDiv.className += " tooltip"
+    const tooltipDiv = tooltipTemplate.cloneNode(true)
+    const tooltipSpan = tooltipDiv.querySelector("span")
+    tooltipSpan.innerText = event.text
+    dayDiv.appendChild(tooltipDiv)
+  })
 }

@@ -80,3 +80,10 @@ const goals = [
     type: "bobs",
   },
 ]
+
+const events = [
+  {
+    date: [2021, 12, 31],
+    text: "Boy cothes get unlocked"
+  }
+]
